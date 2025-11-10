@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nodeselect.html</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td><button class="btn" data-id="r4">확인</button></td>
+      </tr>
+      <tr data-id="r10">
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>
+          <button class="btn" data-id="r5">확인</button>
+        </td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td><button class="btn" data-id="r6">확인</button></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td><button class="btn" data-id="r7">확인</button></td>
+      </tr>
+    </table>
+    <script>
+      // 버튼 클릭 이벤트 : 해당 버튼의 data-id 속성 출력
+      function jsClick() {
+        document.querySelectorAll(".btn").forEach((ele, idx) => {
+          ele.addEventListener("click", (e) => {
+            console.log("JS : " + e.target.dataset.id);
+          });
+        });
+      }
+
+      // jQuery
+      function jQueryClick() {
+        $(".btn").bind("click", (e) => {
+          console.log("jQuery : " + $(e.target).data("id"));
+          // 해당 버튼의 첫 번째 td 태그 내용 출력
+          console.log($(e.target).closest("tr").find("td").first().html());
+        });
+      }
+
+      jQueryClick();
+    </script>
+  </body>
+</html>

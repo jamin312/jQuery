@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>groupevent.html</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <input id="txt" /><button class="btn">추가</button>
+    <ul>
+      <li>바나나</li>
+      <li>사과</li>
+    </ul>
+    <script>
+      function change() {
+        $("li").bind("click", (e) => {
+          console.log(e.target);
+          $(e.target).css("backgroundColor", "yellow");
+        });
+      }
+
+      // 태그에 직접 이벤트 거는 방법
+      $(".btn").bind("click", (e) => {
+        let fruit = $("#txt").val();
+        let newTag = $(`<li>${fruit}</li>`);
+        newTag.bind("click", (e) => {
+          console.log(e.target);
+          $(e.target).css("backgroundColor", "yellow");
+        });
+        $("ul").append(newTag);
+        $("#txt").val("");
+      });
+
+      change();
+    </script>
+  </body>
+</html>

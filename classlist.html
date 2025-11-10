@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classlist.html</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <style>
+      .active {
+        background-color: yellowgreen;
+      }
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="more">보기</button>
+    <ul style="display: none">
+      <li class="active">게시판</li>
+      <li>인사 관리</li>
+      <li>부서 관리</li>
+    </ul>
+    <script>
+      function test() {
+        $("li").on("click", (e) => {
+          $(".active").removeClass("active");
+          $(e.target).addClass("active");
+          $(e.target).toggleClass("bold");
+        });
+      }
+
+      function show() {
+        $("#more").on("click", (e) => {
+          $("ul").toggle(2000, "easeInOutElastic", () => {
+            alert("show!");
+          });
+        });
+      }
+
+      show();
+
+      test();
+    </script>
+  </body>
+</html>
